@@ -6,7 +6,7 @@
 <body>
   <form action="" method="post" enctype="multipart/form-data">
     <input type="file" id="file" name="files[]" multiple="multiple" accept="image/*" />
-  <input type="submit" value="Upload" />
+  <input type="submit" value="Upload" name="uploadFiles"  />
 </form>
 </body>
 </html>
@@ -18,7 +18,7 @@ $maxFileSize = 1024*100000; // Maximum file size: 10MB
 $uploadDir = "Projects/"; //  Upload directory
 $uploadCount = 0; //Counter that keeps track of successful uploads
 
-if(isset($_POST) and $_SERVER['REQUEST_METHOD'] == "POST"){
+if(isset($_POST["uploadFiles"]) and $_SERVER['REQUEST_METHOD'] == "POST"){
 	// Loop $_FILES to execute all files
 	foreach ($_FILES['files']['name'] as $f => $name) {     
 	    if ($_FILES['files']['error'][$f] == 4) {
